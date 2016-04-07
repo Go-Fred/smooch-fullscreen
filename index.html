@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <title>Landing Page - Start Bootstrap Theme</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <style>
+    .visibleBtnDiv {width:58px;
+                  height:58px;}
+    .hiddenBtnDiv {width:0px;
+                  height:0px;}
+    </style>
+
+</head>
+
+<body >
+
+<div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
+</div>
+
+
+<div style="height:100%; width:100%;" id="fullScreenChat"> </div>
+
+<!-- Create the opening/closing button -->
+
+<!-- Background of the button -->
+
+<div class="BtnWrapper"
+     style="position:fixed;
+            z-index:9999;
+            bottom:40px;
+            right:16px;
+            width:58px;
+            height:58px;
+            border-radius:50%;
+            cursor:pointer;
+            box-shadow:0px 2px 5px 0px rgba(0, 0, 0, 0.26);
+            overflow:hidden;">
+
+<!-- open chat button -->
+
+<div id="openBtnDiv" class="visibleBtnDiv"
+     style="left: 0px;
+            top: 0px;
+            border-radius: 50%;
+            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1); transform: rotate(0deg);
+            opacity: 1;
+            background-color: rgb(234, 228, 244);">
+      <a id="openBtn">
+        <img style=" width:50px;height:50px; position:absolute;top:5px;left:5px;" src="images/smooch.png"></img>
+      </a>
+</div>
+
+<!-- Back button -->
+
+<div id="closeBtnDiv" class="hiddenBtnDiv"
+     style="position:absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 50%;
+            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+            transform: rotate(180deg);
+            opacity: 1;
+            background-color: rgb(64, 51, 81);">
+      <a id="closeBtn">
+            <img style="position:absolute;top:19px;left:19px;" src="images/close_button.png"></img></div>
+      </a>
+
+</div>
+    <script src="https://cdn.smooch.io/smooch.min.js"></script>
+
+    <script>
+
+    /* -- Initialise Smooch -- */
+      Smooch.init({
+      	appToken: '5irr42yxj3p3p9cr4xxe0lpep',
+        embedded: true,
+      	emailCaptureEnabled: true,
+      	})
+    /* -- Render Smooch in full screen -- */
+    /*  var myContainer = document.getElementsByClassName("full-screen-msg");
+      Smooch.render(myContainer[0])*/
+
+    </script>
+    <script>
+
+      var openBtn = document.getElementById('openBtn');
+      var closeBtn = document.getElementById('closeBtn');
+      var mainContainer = document.getElementById('mainContainer');
+      var fullScreenChat = document.getElementById("fullScreenChat");
+
+      openBtn.onclick = function() {
+
+        //Hide the open button
+        openBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+
+        //Show the Close button
+        closeBtnDiv.setAttribute('class', 'visibleBtnDiv');
+
+        openchat();
+        return false;
+
+      };
+
+      closeBtn.onclick = function() {
+
+        //Hide the open button
+        openBtnDiv.setAttribute('class', 'visibleBtnDiv');
+
+        //Show the Close button
+        closeBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+
+        closechat();
+        return false;
+      };
+
+      function openchat() {
+
+        /* -- Hiding the main container -- */
+        mainContainer.style.display = 'none'
+
+        /* -- Displaying the main container -- */
+        fullScreenChat.style.display = 'block'
+        Smooch.render(fullScreenChat);
+      };
+
+      function closechat() {
+
+        /* -- Displaying the main container -- */
+        mainContainer.style.display = 'block'
+        fullScreenChat.style.display = 'none'
+      }
+    </script>
+
+    <script>
+
+
+    </script>
+
+
+</body>
+
+</html>
