@@ -19,12 +19,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <style>
-    .visibleBtnDiv {width:58px;
-                  height:58px;}
-    .hiddenBtnDiv {width:0px;
-                  height:0px;}
-    </style>
+
 
 </head>
 
@@ -54,11 +49,13 @@
 
 <!-- open chat button -->
 
-<div id="openBtnDiv" class="visibleBtnDiv"
-     style="left: 0px;
+<div id="openBtnDiv"
+     style="width:58px;
+            height:58px;
+            left: 0px;
             top: 0px;
             border-radius: 50%;
-            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1); transform: rotate(0deg);
+            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1); transform: rotate(0deg);-->
             opacity: 1;
             background-color: rgb(234, 228, 244);">
       <a id="openBtn">
@@ -68,8 +65,10 @@
 
 <!-- Back button -->
 
-<div id="closeBtnDiv" class="hiddenBtnDiv"
-     style="position:absolute;
+<div id="closeBtnDiv"
+     style="width:0px;
+            height:0px;
+            position:absolute;
             left: 0px;
             top: 0px;
             border-radius: 50%;
@@ -103,14 +102,22 @@
       var closeBtn = document.getElementById('closeBtn');
       var mainContainer = document.getElementById('mainContainer');
       var fullScreenChat = document.getElementById("fullScreenChat");
+      var openBtnDiv = document.getElementById("openBtnDiv");
+      var closeBtnDiv = document.getElementById("closeBtnDiv");
 
       openBtn.onclick = function() {
 
+        openBtnDiv.style.width = '0px';
+        openBtnDiv.style.height= '0px';
+
+        closeBtnDiv.style.width = '58px';
+        closeBtnDiv.style.height = '58px';
+
         //Hide the open button
-        openBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+        //openBtnDiv.setAttribute('class', 'hiddenBtnDiv');
 
         //Show the Close button
-        closeBtnDiv.setAttribute('class', 'visibleBtnDiv');
+        //closeBtnDiv.setAttribute('class', 'visibleBtnDiv');
 
         openchat();
         return false;
@@ -119,11 +126,18 @@
 
       closeBtn.onclick = function() {
 
+        closeBtnDiv.style.width = '0px';
+        closeBtnDiv.style.height= '0px';
+
+        openBtnDiv.style.width = '58px';
+        openBtnDiv.style.height = '58px';
+
+
         //Hide the open button
-        openBtnDiv.setAttribute('class', 'visibleBtnDiv');
+        //openBtnDiv.setAttribute('class', 'visibleBtnDiv');
 
         //Show the Close button
-        closeBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+        //closeBtnDiv.setAttribute('class', 'hiddenBtnDiv');
 
         closechat();
         return false;
